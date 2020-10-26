@@ -5,20 +5,27 @@
  */
 package eventos_ventana_teclado_raton;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.JLabel;
 
 /**
  *
  * @author User
  */
-class Controlador_Ventana implements WindowListener {
+class Controlador_Ventana implements WindowListener, MouseListener {
 
     Vista vista;
 
     public Controlador_Ventana(Vista vista) {
         this.vista = vista;
     }
+    
+    /*
+    Eventos Ventana
+    */
 
     @Override
     public void windowOpened(WindowEvent e) {
@@ -54,6 +61,41 @@ class Controlador_Ventana implements WindowListener {
     @Override
     public void windowDeactivated(WindowEvent e) {
 
+    }
+
+    
+    /*
+    Eventos Ratón
+    */
+    @Override
+    public void mouseClicked(MouseEvent e) {
+   
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        JLabel imagen=(JLabel)e.getSource();
+        
+     
+            vista.cambiar_Icono_Label_Estrella(vista.getImagen_Estrella_Azul());
+            vista.repaint();
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+         vista.cambiar_Icono_Label_Estrella(vista.getImagen_Estrella_Amarilla());
+            vista.repaint();
     }
 
 }

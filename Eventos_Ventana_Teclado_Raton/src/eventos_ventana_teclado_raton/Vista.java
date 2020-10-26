@@ -25,7 +25,11 @@ public class Vista extends JFrame {
     private final String COORDENADA_X = "Coordenada x->";
     private final String COORDENADA_Y = "Coordenada y->";
     private final String DENTRO_DE = "Dentro de: ";
+    
     private JLabel estrella_Label;
+   private ImageIcon imagen_Estrella_Amarilla = new ImageIcon(getClass().getResource("/imagenes/estrella.jpg"));
+   private ImageIcon imagen_Estrella_Azul = new ImageIcon(getClass().getResource("/imagenes/estrella_Azul.jpg"));
+   
 
     private JLabel carcter_Label;
     private JLabel coordenadaX_Label;
@@ -39,6 +43,7 @@ public class Vista extends JFrame {
         controlador_Ventana = new Controlador_Ventana(this);
         this.addWindowListener(controlador_Ventana);
         anadirPanel_Estrella();
+        estrella_Label.addMouseListener(controlador_Ventana);
         anadir_Panel_Caracter_Coordenadas_Label();
         anadir_Panel_TextField_Dentro_De();
 
@@ -72,13 +77,26 @@ public class Vista extends JFrame {
         this.add(panel_Estrella);
         estrella_Label = new JLabel();
 
-        ImageIcon imagen_Estrella_Amarilla = new ImageIcon(getClass().getResource("/imagenes/estrella.jpg"));
+        imagen_Estrella_Amarilla = new ImageIcon(getClass().getResource("/imagenes/estrella.jpg"));
         ImageIcon imagen_Estrella_Amarilla_2 = new ImageIcon(imagen_Estrella_Amarilla.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
         estrella_Label.setIcon(imagen_Estrella_Amarilla_2);
         panel_Estrella.add(estrella_Label);
 
     }
 
+    public ImageIcon getImagen_Estrella_Amarilla() {
+        ImageIcon imagen_Estrella_Amarilla_2 = new ImageIcon(imagen_Estrella_Amarilla.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        return imagen_Estrella_Amarilla_2;
+    }
+
+    public ImageIcon getImagen_Estrella_Azul() {
+         ImageIcon imagen_Estrella_Azul_2 = new ImageIcon(imagen_Estrella_Azul.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        return imagen_Estrella_Azul_2;
+    }
+   
+    public void cambiar_Icono_Label_Estrella(ImageIcon imagen){
+        estrella_Label.setIcon(imagen);
+    }
     private void anadir_Panel_Caracter_Coordenadas_Label() {
         JPanel panel_Caracter_Coord = new JPanel();
         panel_Caracter_Coord.setLayout(new GridLayout(1,1));
