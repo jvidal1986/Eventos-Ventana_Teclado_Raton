@@ -102,9 +102,11 @@ class Controlador_Ventana implements WindowListener, MouseListener, KeyListener 
      */
     @Override
     public void keyTyped(KeyEvent e) {
+
         char letra = e.getKeyChar();
         vista.cambiar_caracterLabel(letra);
         vista.repaint();
+
 
     }
 
