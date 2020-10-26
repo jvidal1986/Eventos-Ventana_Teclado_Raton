@@ -5,6 +5,8 @@
  */
 package eventos_ventana_teclado_raton;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -15,18 +17,17 @@ import javax.swing.JLabel;
  *
  * @author User
  */
-class Controlador_Ventana implements WindowListener, MouseListener {
+class Controlador_Ventana implements WindowListener, MouseListener, KeyListener {
 
     Vista vista;
 
     public Controlador_Ventana(Vista vista) {
         this.vista = vista;
     }
-    
+
     /*
     Eventos Ventana
-    */
-
+     */
     @Override
     public void windowOpened(WindowEvent e) {
 
@@ -63,40 +64,60 @@ class Controlador_Ventana implements WindowListener, MouseListener {
 
     }
 
-    
     /*
     Eventos Ratón
-    */
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
-   
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        JLabel imagen=(JLabel)e.getSource();
-        
-     
-            vista.cambiar_Icono_Label_Estrella(vista.getImagen_Estrella_Azul());
-            vista.repaint();
-        
+        JLabel imagen = (JLabel) e.getSource();
+
+        vista.cambiar_Icono_Label_Estrella(vista.getImagen_Estrella_Azul());
+        vista.repaint();
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-         vista.cambiar_Icono_Label_Estrella(vista.getImagen_Estrella_Amarilla());
-            vista.repaint();
+        vista.cambiar_Icono_Label_Estrella(vista.getImagen_Estrella_Amarilla());
+        vista.repaint();
+    }
+
+    /*
+    Eventos teclado
+     */
+    @Override
+    public void keyTyped(KeyEvent e) {
+        char letra = e.getKeyChar();
+        vista.cambiar_caracterLabel(letra);
+        vista.repaint();
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        char letra = e.getKeyChar();
+        vista.cambiar_caracterLabel(letra);
+        vista.repaint();
     }
 
 }
-

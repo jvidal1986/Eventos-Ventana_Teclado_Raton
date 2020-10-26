@@ -21,7 +21,7 @@ public class Vista extends JFrame {
      private final String MAXIMIZADO = "Ventana maximizada";
     private final String MINIMIZADO = "Ventana minimizada";
     private final String CERRADO = "Ventana cerrada";
-    private final String LETRA = "Letra:";
+    private final String LETRA = "Letra: ";
     private final String COORDENADA_X = "Coordenada x->";
     private final String COORDENADA_Y = "Coordenada y->";
     private final String DENTRO_DE = "Dentro de: ";
@@ -31,7 +31,7 @@ public class Vista extends JFrame {
    private ImageIcon imagen_Estrella_Azul = new ImageIcon(getClass().getResource("/imagenes/estrella_Azul.jpg"));
    
 
-    private JLabel carcter_Label;
+    private JLabel caracter_Label;
     private JLabel coordenadaX_Label;
     private JLabel coordenadaY_Label;
 
@@ -42,9 +42,14 @@ public class Vista extends JFrame {
     public Vista() {
         controlador_Ventana = new Controlador_Ventana(this);
         this.addWindowListener(controlador_Ventana);
+         this.addKeyListener(controlador_Ventana);
         anadirPanel_Estrella();
+        
         estrella_Label.addMouseListener(controlador_Ventana);
+        
         anadir_Panel_Caracter_Coordenadas_Label();
+       
+        
         anadir_Panel_TextField_Dentro_De();
 
         iniciar_ventana();
@@ -56,6 +61,9 @@ public class Vista extends JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * Metodos para el evento de WindowsEvent
+     */
     public void escribir_Maximizado() {
         System.out.println(MAXIMIZADO);
 
@@ -70,6 +78,10 @@ public class Vista extends JFrame {
         System.out.println(CERRADO);
 
     }
+    
+    /**
+     * Añadir el panel donde irá la imagen de la estrella con su imagen y su label
+     */
 
     private void anadirPanel_Estrella() {
         JPanel panel_Estrella = new JPanel();
@@ -83,20 +95,49 @@ public class Vista extends JFrame {
         panel_Estrella.add(estrella_Label);
 
     }
-
+    
+    
+    /*
+    EMPIEZAN MÉTODOS PARA AÑADIR EL PANEL Y EL LABEL DONDE IRA LA IMAGEN DE LA ESTRELLA Y CAMBIARLA POR OTRA.
+    */
+/**
+ * Método para obtener la imagen de la estrella amarilla
+ * @return imageicon
+ */
     public ImageIcon getImagen_Estrella_Amarilla() {
         ImageIcon imagen_Estrella_Amarilla_2 = new ImageIcon(imagen_Estrella_Amarilla.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
         return imagen_Estrella_Amarilla_2;
     }
+    
 
+    /**
+ * Método para obtener la imagen de la estrella azul
+ * @return imageicon
+ */
     public ImageIcon getImagen_Estrella_Azul() {
          ImageIcon imagen_Estrella_Azul_2 = new ImageIcon(imagen_Estrella_Azul.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
         return imagen_Estrella_Azul_2;
     }
    
+    /**
+     * Cambia la imagen de un label.
+     * @param imagen que es un imageIcon.
+     */
     public void cambiar_Icono_Label_Estrella(ImageIcon imagen){
         estrella_Label.setIcon(imagen);
     }
+    
+    /*
+    TERMNAN LOS MÉTODOS RELACIONADOS CON LA ESTRELLA
+    */
+    
+    /*
+    EMPIEZAN LOS MÉTODOS RELACIONADOS CON EL PANEL DEL CARACTER Y EL PANEL DE LAS COORDENADAS
+    */
+    
+    /**
+     * Añade los paneles del caracter y de las coordenadas a un panel que contiene los dos. Este a su vez es añadido al frame. Cambia de color el fondo de los paneles.
+     */
     private void anadir_Panel_Caracter_Coordenadas_Label() {
         JPanel panel_Caracter_Coord = new JPanel();
         panel_Caracter_Coord.setLayout(new GridLayout(1,1));
@@ -104,8 +145,8 @@ public class Vista extends JFrame {
 
         JPanel caracter_Panel = new JPanel();
         caracter_Panel.setBackground(Color.RED);
-        carcter_Label = new JLabel(LETRA);
-        caracter_Panel.add(carcter_Label);
+        caracter_Label = new JLabel(LETRA);
+        caracter_Panel.add(caracter_Label);
         panel_Caracter_Coord.add(caracter_Panel);
         
         JPanel panel_Coord=new JPanel();
@@ -118,7 +159,19 @@ public class Vista extends JFrame {
         panel_Coord.add(coordenadaY_Label);
         panel_Caracter_Coord.add(panel_Coord);
     }
-
+    
+    /**
+     * Cambia el contenido del label de caracteres pasandole un char.
+     * @param letra Es un char.
+     */
+    public void cambiar_caracterLabel(char letra){
+        caracter_Label.setText(LETRA+ letra);
+    }
+/*
+    FINAL MÉTODO PARA CARACTER
+    */
+    
+    
     private void anadir_Panel_TextField_Dentro_De() {
         JPanel panel_Dentro_Label = new JPanel();
         panel_Dentro_Label.setBackground(Color.ORANGE);
