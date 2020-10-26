@@ -43,7 +43,6 @@ public class Vista extends JFrame {
         controlador_Ventana = new Controlador_Ventana(this);
         this.addWindowListener(controlador_Ventana);
          this.addKeyListener(controlador_Ventana);
-         this.addMouseMotionListener(controlador_Ventana);
         anadirPanel_Estrella();
         
         estrella_Label.addMouseListener(controlador_Ventana);
@@ -172,7 +171,6 @@ public class Vista extends JFrame {
     FINAL MÉTODO PARA CARACTER
     */
     
-
     /*
     cambiar labels de coordenadas
     */
@@ -183,16 +181,7 @@ public class Vista extends JFrame {
         coordenadaY_Label.setText(COORDENADA_Y+y);
     }
     
-
     
-    public void cambiarLabel_CoordX(int coordenada){
-        coordenadaX_Label.setText(COORDENADA_X+ coordenada);
-    }
-  
-    
-     public void cambiarLabel_CoordY(int coordenada){
-        coordenadaY_Label.setText(COORDENADA_Y+ coordenada);
-    }
     private void anadir_Panel_TextField_Dentro_De() {
         JPanel panel_Dentro_Label = new JPanel();
         panel_Dentro_Label.setBackground(Color.ORANGE);
