@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.JLabel;
 
 /**
  *
@@ -84,7 +85,8 @@ class Controlador_Ventana implements WindowListener, MouseListener, KeyListener,
 
     @Override
     public void mouseEntered(MouseEvent e) {
-       
+        JLabel imagen = (JLabel) e.getSource();
+
         vista.cambiar_Icono_Label_Estrella(vista.getImagen_Estrella_Azul());
         vista.repaint();
 
@@ -101,11 +103,7 @@ class Controlador_Ventana implements WindowListener, MouseListener, KeyListener,
      */
     @Override
     public void keyTyped(KeyEvent e) {
-
-        char letra = e.getKeyChar();
-        vista.cambiar_caracterLabel(letra);
-        vista.repaint();
-
+        
 
     }
 
@@ -123,12 +121,16 @@ class Controlador_Ventana implements WindowListener, MouseListener, KeyListener,
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       //Para arrastrar.
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       int x=e.getX();
+       int y=e.getY();
+       vista.cambiarCoordX(x);
+       vista.cambiarCoordY(y);
+       vista.repaint();
     }
 
 }

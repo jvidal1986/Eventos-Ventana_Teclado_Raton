@@ -171,6 +171,16 @@ public class Vista extends JFrame {
     FINAL MÉTODO PARA CARACTER
     */
     
+    /*
+    cambiar labels de coordenadas
+    */
+    public void cambiarCoordX(int x){
+        coordenadaX_Label.setText(COORDENADA_X+x);
+    }
+    public void cambiarCoordY(int y){
+        coordenadaY_Label.setText(COORDENADA_Y+y);
+    }
+    
     
     private void anadir_Panel_TextField_Dentro_De() {
         JPanel panel_Dentro_Label = new JPanel();
