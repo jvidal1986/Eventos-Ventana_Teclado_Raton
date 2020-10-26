@@ -103,7 +103,6 @@ class Controlador_Ventana implements WindowListener, MouseListener, KeyListener,
      */
     @Override
     public void keyTyped(KeyEvent e) {
-        
 
     }
 
@@ -131,6 +130,9 @@ class Controlador_Ventana implements WindowListener, MouseListener, KeyListener,
        vista.cambiarCoordX(x);
        vista.cambiarCoordY(y);
        vista.repaint();
+        //Para arrastrar
     }
+
+
 
 }
