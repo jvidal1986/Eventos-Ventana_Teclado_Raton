@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JLabel;
@@ -18,7 +17,7 @@ import javax.swing.JLabel;
  *
  * @author User
  */
-class Controlador_Ventana implements WindowListener, MouseListener, KeyListener, MouseMotionListener {
+class Controlador_Ventana implements WindowListener, MouseListener, KeyListener {
 
     Vista vista;
 
@@ -117,20 +116,6 @@ class Controlador_Ventana implements WindowListener, MouseListener, KeyListener,
         char letra = e.getKeyChar();
         vista.cambiar_caracterLabel(letra);
         vista.repaint();
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-       //Para arrastrar.
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-       int x=e.getX();
-       int y=e.getY();
-       vista.cambiarCoordX(x);
-       vista.cambiarCoordY(y);
-       vista.repaint();
     }
 
 }
